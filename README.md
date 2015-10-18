@@ -1,6 +1,7 @@
 # QueryOptimizer
 
-TODO: Write a gem description
+This is rails gem which will minimize query for many_to_many relationship .
+Minimize query by query_optimizer just pass your model name as QueryOptimizer.optimize_query(Model1,Model2)
 
 ## Installation
 
@@ -20,11 +21,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Refer https://github.com/akshaygoyal88/query_optimizer/blob/master/README.rdoc for usage
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/query_optimizer/fork )
+1. Fork it ( https://github.com/akshaygoyal88/query_optimizer/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

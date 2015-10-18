@@ -2,7 +2,7 @@ require 'rubygems'
 require 'rake'
 require 'echoe'
 
-Echoe.new('query_optimizer', '0.1.0') do |p|
+Echoe.new('query_optimizer', '0.1.1') do |p|
   p.description     = "Minimize query for fetching table row"
   p.url             = "http://github.com/akshaygoyal88/query_optimizer"
   p.author          = "Akshay Goyal"

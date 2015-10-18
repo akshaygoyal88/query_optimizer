@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
-# stub: query_optimizer 0.1.0 ruby lib
+# stub: query_optimizer 0.1.1 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "query_optimizer"
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
@@ -18,5 +18,4 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "query_optimizer"
   s.rubygems_version = "2.2.2"
   s.summary = "Minimize query for fetching table row"
-  s.license = 'MIT'
 end

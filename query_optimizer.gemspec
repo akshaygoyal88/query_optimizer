@@ -7,6 +7,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
+  s.licenses    = ['MIT']
   s.authors = ["Akshay Goyal"]
   s.date = "2015-10-18"
   s.description = "Minimize query for fetching table row"

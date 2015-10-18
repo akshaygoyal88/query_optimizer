@@ -1,0 +1,47 @@
+{<img src="https://badge.fury.io/rb/query_optimizer.png" alt="Gem Version" />}[http://badge.fury.io/rb/query_optimizer]
+
+= query_optimizer
+
+* http://github.com/akshaygoyal88/query_optimizer
+
+== FEATURES:
+
+query_optimizer is the best gem for optimizing query in rails for has_many and belongs_to relationship two tables.
+In rails If you want all posts and its related comments in a single query than you can't get it
+as Post.incldes(:comments) or Post.joins(:comments) will return only posts array and Comment.incldes(:posts) will return only comments array  
+For fetching each post comment you have to fire query from view as below output of post.comments in each with index loop.
+
+    Started GET "/" for 127.0.0.1 at 2015-10-18 14:12:11 +0530
+    Processing by PostsController#index as HTML
+      Post Load (0.5ms)  SELECT `posts`.* FROM `posts`
+      Comment Load (0.3ms)  SELECT `comments`.* FROM `comments`  WHERE `comments`.`post_id` = 44
+      Rendered comments/_comment.html.erb (0.5ms)
+      Rendered posts/_post.html.erb (6.3ms)
+      Comment Load (0.6ms)  SELECT `comments`.* FROM `comments`  WHERE `comments`.`post_id` = 45
+      Rendered comments/_comment.html.erb (0.3ms)
+      Rendered posts/_post.html.erb (5.2ms)
+      Comment Load (0.6ms)  SELECT `comments`.* FROM `comments`  WHERE `comments`.`post_id` = 46
+      Rendered comments/_comment.html.erb (0.3ms)
+      Rendered posts/_post.html.erb (5.6ms)
+      Comment Load (0.6ms)  SELECT `comments`.* FROM `comments`  WHERE `comments`.`post_id` = 47
+      Rendered collection (0.0ms)
+      Rendered posts/_post.html.erb (4.1ms)
+      Rendered posts/index.html.erb within layouts/application (31.7ms)
+
+== DESCRIPTION:
+so to minimize query you can use query_optimizer you can just pass your model name as QueryOptimizer.optimize_query(Model1,Model2)
+
+    require 'query_optimizer'
+    QueryOptimizer.optimize_query(Post,Comment)
+
+    (1.1ms)  SELECT posts.*,comments.* FROM posts INNER JOIN comments on posts.id=comments.post_id
+    => [{"posts_id"=>44, "posts_name"=>"name1", "posts_description"=>"desc1", "posts_created_at"=>2015-02-01 10:40:05 UTC, "posts_updated_at"=>2015-02-01 10:40:05 UTC, "comments_id"=>4, "comments_name"=>"gdfdhddffdd", "comments_description"=>nil, "comments_post_id"=>44, "comments_created_at"=>2015-10-10 16:49:12 UTC, "comments_updated_at"=>2015-10-10 16:49:12 UTC}, {"posts_id"=>45, "posts_name"=>"name2", "posts_description"=>"desc2", "posts_created_at"=>2015-02-01 10:40:05 UTC, "posts_updated_at"=>2015-02-01 10:40:05 UTC, "comments_id"=>5, "comments_name"=>"dhdfdfhdhdfhfd", "comments_description"=>nil, "comments_post_id"=>45, "comments_created_at"=>2015-10-10 16:49:19 UTC, "comments_updated_at"=>2015-10-10 16:49:19 UTC}, {"posts_id"=>44, "posts_name"=>"name3", "posts_description"=>"desc3", "posts_created_at"=>2015-02-01 10:40:05 UTC, "posts_updated_at"=>2015-02-01 10:40:05 UTC, "comments_id"=>6, "comments_name"=>"hfdhdfhdf", "comments_description"=>nil, "comments_post_id"=>44, "comments_created_at"=>2015-10-10 16:51:26 UTC, "comments_updated_at"=>2015-10-10 16:51:26 UTC}, {"posts_id"=>46, "posts_name"=>"name3", "posts_description"=>"desc3", "posts_created_at"=>2015-02-01 10:41:14 UTC, "posts_updated_at"=>2015-02-01 10:41:14 UTC, "comments_id"=>7, "comments_name"=>"dhdfdfhdfhdf", "comments_description"=>nil, "comments_post_id"=>46, "comments_created_at"=>2015-10-10 16:51:32 UTC, "comments_updated_at"=>2015-10-10 16:51:32 UTC}] 
+
+
+== REQUIREMENTS:
+
+* rails
+
+== INSTALL:
+
+* gem install query_optimizer

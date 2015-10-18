@@ -18,5 +18,5 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "query_optimizer"
   s.rubygems_version = "2.2.2"
   s.summary = "Minimize query for fetching table row"
-  spec.license = 'MIT'
+  s.license = 'MIT'
 end

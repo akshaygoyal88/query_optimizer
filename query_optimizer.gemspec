@@ -11,11 +11,12 @@ Gem::Specification.new do |s|
   s.date = "2015-10-18"
   s.description = "Minimize query for fetching table row"
   s.email = "akshay.goyal1008@gmail.com"
-  s.extra_rdoc_files = ["LICENSE", "README.md", "lib/query_optimizer.rb"]
-  s.files = ["LICENSE", "Manifest", "README.md", "Rakefile", "lib/query_optimizer.rb", "query_optimizer.gemspec"]
+  s.extra_rdoc_files = ["LICENSE", "README.md", "README.rdoc", "lib/query_optimizer.rb"]
+  s.files = ["LICENSE", "Manifest", "README.md", "README.rdoc", "Rakefile", "lib/query_optimizer.rb", "query_optimizer.gemspec"]
   s.homepage = "http://github.com/akshaygoyal88/query_optimizer"
   s.rdoc_options = ["--line-numbers", "--title", "Query_optimizer", "--main", "README.md"]
   s.rubyforge_project = "query_optimizer"
   s.rubygems_version = "2.2.2"
   s.summary = "Minimize query for fetching table row"
+  spec.license = 'MIT'
 end

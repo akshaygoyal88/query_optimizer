@@ -1,0 +1,7 @@
+LICENSE
+README.md
+README.rdoc
+Rakefile
+lib/query_optimizer.rb
+query_optimizer.gemspec
+Manifest

@@ -1,13 +1,24 @@
 module QueryOptimizer
-  def self.optimize_query(model1,model2)
-    table1 = model1.table_name
-    table2 = model2.table_name
-    get_singular_name = table1.singularize
-    table1_columns = model1.column_names
-    table2_columns = model2.column_names
-    table1alias = table1_columns.map { |word| "#{table1}.#{word} AS #{table1}_#{word}" }.join(',')
-    table2alias = table2_columns.map { |word| "#{table2}.#{word} AS #{table2}_#{word}" }.join(',')
-    results = ActiveRecord::Base.connection.select_all("SELECT #{table1alias},#{table2alias} FROM #{table1}, #{table2} where #{table1}.id=#{table2}.#{get_singular_name}_id").to_a 
+  def self.included(base)
+    base.extend ClassMethods
+  end
+  module ClassMethods
+    def optimize_query(*args)
+      joins=[]
+      aliases = []
+      args.to_a.unshift(self.table_name.to_sym)
+      args.each_with_index do |table,index|
+        aliases << table.to_s.classify.constantize.column_names.map { |word| "#{table}.#{word} AS #{table}_#{word}" }.join(',')
+        next_value = args.to_a[index+1].nil? ? nil : args.to_a[index+1]
+        if args.count-2 == index
+           joins << "#{table}.id=#{next_value}.#{table.to_s.singularize}_id"
+        else
+          joins << "#{table}.id=#{next_value}.#{table.to_s.singularize}_id AND" if next_value
+        end
+      end
+      tables = args.map{|p| p.to_s}.join(',')
+      return ActiveRecord::Base.connection.select_all("SELECT #{aliases.join(',')} FROM #{tables} where #{joins.join(' ')}").to_a.sort{ |x, y| y["#{args.first.to_s}_id"] <=> x["#{args.first.to_s}_id"] }
+    end
   end
 end
 

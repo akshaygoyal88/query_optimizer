@@ -1,7 +1,7 @@
 # QueryOptimizer
 
-This is rails gem which will minimize query for many_to_many relationship.
-Minimize query by query_optimizer just pass your model name as QueryOptimizer.optimize_query(Model1,Model2)
+This is rails gem which will minimize query for one-to-one, one-to-many database relationships.
+Minimize query by query_optimizer just pass your table name as Post.optimize_query(:comments)
 
 ## Installation
 

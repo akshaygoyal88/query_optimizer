@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = QueryOptimizer::VERSION
   spec.authors       = ["Akshay"]
   spec.email         = ["akshay.goyal1008@gmail.com"]
-  spec.summary       = %q{This is rails gem which will minimize query for many_to_many relationship}
-  spec.description   = %q{This is rails gem which will minimize query for many_to_many relationship.}
+  spec.summary       = %q{This is rails gem which will minimize query for one-to-one, one-to-many database relationships.}
+  spec.description   = %q{This is rails gem which will minimize query for one-to-one, one-to-many database relationships.}
   spec.homepage      = ""
   spec.license       = "MIT"
 

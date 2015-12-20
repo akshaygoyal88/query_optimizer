@@ -6,7 +6,7 @@
 
 == FEATURES:
 
-query_optimizer is the best gem for optimizing query in rails for has_many or has_one and belongs_to relationship two tables.
+query_optimizer is the best gem for optimizing query in rails for has_many or has_one and belongs_to relationship.
 In rails If you want all posts and its related comments in a single query than you can't get it
 as Post.incldes(:comments) or Post.joins(:comments) will return only posts array and Comment.incldes(:posts) will return only comments array  
 For fetching each post comment you have to fire query from view as below output of post.comments in each with index loop.

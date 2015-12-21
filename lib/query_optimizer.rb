@@ -17,7 +17,7 @@ module QueryOptimizer
         end
       end
       tables = args.map{|p| p.to_s}.join(',')
-      return ActiveRecord::Base.connection.select_all("SELECT #{aliases.join(',')} FROM #{tables} where #{joins.join(' ')}").to_a.sort{ |x, y| y["#{args.first.to_s}_id"] <=> x["#{args.first.to_s}_id"] }
+      return ActiveRecord::Base.connection.select_all("SELECT #{aliases.join(',')} FROM #{tables} where #{joins.join(' ')} ORDER BY #{args.first.to_s}_id desc").to_a
     end
   end
 end

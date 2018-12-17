@@ -9,27 +9,10 @@
 query_optimizer is the best gem for optimizing query in rails for has_many or has_one and belongs_to relationship.
 In rails If you want all posts and its related comments in a single query than you can't get it
 as Post.includes(:comments) or Post.joins(:comments) will return only posts array and Comment.includes(:posts) will return only comments array  
-For fetching each post comment you have to fire query from view as below output of post.comments in each with index loop.
-
-    Started GET "/" for 127.0.0.1 at 2015-10-18 14:12:11 +0530
-    Processing by PostsController#index as HTML
-      Post Load (0.5ms)  SELECT `posts`.* FROM `posts`
-      Comment Load (0.3ms)  SELECT `comments`.* FROM `comments`  WHERE `comments`.`post_id` = 44
-      Rendered comments/_comment.html.erb (0.5ms)
-      Rendered posts/_post.html.erb (6.3ms)
-      Comment Load (0.6ms)  SELECT `comments`.* FROM `comments`  WHERE `comments`.`post_id` = 45
-      Rendered comments/_comment.html.erb (0.3ms)
-      Rendered posts/_post.html.erb (5.2ms)
-      Comment Load (0.6ms)  SELECT `comments`.* FROM `comments`  WHERE `comments`.`post_id` = 46
-      Rendered comments/_comment.html.erb (0.3ms)
-      Rendered posts/_post.html.erb (5.6ms)
-      Comment Load (0.6ms)  SELECT `comments`.* FROM `comments`  WHERE `comments`.`post_id` = 47
-      Rendered collection (0.0ms)
-      Rendered posts/_post.html.erb (4.1ms)
-      Rendered posts/index.html.erb within layouts/application (31.7ms)
+so you can use this gem if you want all relational data in 1 single array
 
 == DESCRIPTION:
-so to minimize query you can use query_optimizer you can just pass your table name as Post.optimize_query(:comments)
+you can use query_optimizer you can just pass your table name as Post.optimize_query(:comments)
 
     require 'query_optimizer'
     Post.optimize_query(:comments)
